@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_funcionario"
+        tools:itemCount="10"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:id="@+id/recycler_funcionarios"/>
+
+
+
+    <ImageButton
+        android:id="@+id/btnOpenCvCadastroFuncionario"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:elevation="8dp"
+        android:scaleType="center"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_baseline_groups_bigger_size"
+        android:layout_marginTop="16dp"
+        app:tint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/ripple_oval"
+         />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_cadastro_funcionario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="12dp"
+        android:visibility="gone"
+        android:layout_marginTop="20dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_close_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_margin="16dp"
+                    android:id="@+id/iv_close_cadastro_funcionario"/>
+
+                <TextView
+                    android:id="@+id/tv_label_cadastro_funcionarios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cadastro de Funcionário"
+                    android:textColor="@color/alt_black2"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:layout_marginTop="86dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <EditText
+                    android:id="@+id/et_nome_funcionario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome do Funcionário"
+                    android:textColor="@color/alt_black2"
+                    android:layout_marginTop="46dp"
+                    android:background="@null"
+                    android:paddingVertical="10dp"
+                    android:layout_marginHorizontal="26dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_label_cadastro_funcionarios"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <EditText
+                    android:id="@+id/et_cargo_funcionario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Cargo do Funcionário"
+                    android:textColor="@color/alt_black2"
+                    android:background="@null"
+                    android:layout_marginTop="20dp"
+                    android:paddingVertical="10dp"
+                    app:layout_constraintTop_toBottomOf="@id/et_nome_funcionario"
+                    android:layout_marginHorizontal="26dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tv_label_servicos_funcionarios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Serviços que o funcionário executará"
+                    android:textColor="@color/alt_black2"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="22sp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintTop_toBottomOf="@id/et_cargo_funcionario"
+                    app:layout_constraintStart_toStartOf="@id/et_cargo_funcionario"/>
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cb_corte_cabelo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Corte de Cabelo"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    app:buttonTint="@color/light_yellow"
+                    app:layout_constraintTop_toBottomOf="@id/tv_label_servicos_funcionarios"
+                    app:layout_constraintStart_toStartOf="@id/tv_label_servicos_funcionarios"
+                    />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cb_pintura_cabelo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pintura de Cabelo"
+                    android:textSize="20sp"
+                    app:buttonTint="@color/light_yellow"
+                    app:layout_constraintTop_toBottomOf="@id/cb_corte_cabelo"
+                    app:layout_constraintStart_toStartOf="@id/tv_label_servicos_funcionarios"
+                    />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cb_manicure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manicure"
+                    android:textSize="20sp"
+                    app:buttonTint="@color/light_yellow"
+                    app:layout_constraintTop_toBottomOf="@id/cb_pintura_cabelo"
+                    app:layout_constraintStart_toStartOf="@id/tv_label_servicos_funcionarios"
+                    />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/cb_pedicure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pedicure"
+                    app:buttonTint="@color/light_yellow"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/cb_manicure"
+                    app:layout_constraintStart_toStartOf="@id/tv_label_servicos_funcionarios"
+                    />
+
+                <Button
+                    android:id="@+id/btn_selecionar_foto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="26dp"
+                    android:text="Selecionar Foto"
+                    android:textAllCaps="false"
+                    android:textColor="@color/alt_black2"
+                    android:textStyle="bold"
+                    android:layout_marginTop="36dp"
+                    android:backgroundTint="@color/light_yellow"
+                    app:layout_constraintTop_toBottomOf="@id/cb_pedicure"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_funcionario"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:layout_constraintTop_toBottomOf="@id/btn_selecionar_foto"
+                    android:layout_marginTop="40dp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+                <Button
+                    android:id="@+id/btn_cadastrar_funcionário"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="26dp"
+                    android:text="Cadastrar Funcionário"
+                    android:textAllCaps="false"
+                    android:textColor="@color/alt_black2"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    android:layout_marginTop="36dp"
+                    android:backgroundTint="@color/light_yellow"
+                    app:layout_constraintTop_toBottomOf="@id/iv_funcionario"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="20dp"/>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
