@@ -71,6 +71,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/horario_marcado_item"
         app:layout_constraintTop_toBottomOf="@id/tv_label_filtro_por_data"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
 
