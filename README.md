@@ -1,3 +1,83 @@
+English:
+<h1 align="center">Salon Admin Premium</h1>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+  <a href="https://android-arsenal.com/api?level=24"><img src="https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat" border="0" alt="API"></a>
+  <br>
+  <a href="https://wa.me/+5511961422254"><img alt="WhatsApp" src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
+  <a href="https://www.linkedin.com/in/rubens-francisco-125529162/"><img alt="Linkedin" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+  <a href="mailto:rubens_assis@outlook.com.br"><img alt="Outlook" src="https://img.shields.io/badge/Microsoft_Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white"/></a>
+</p>
+
+<p align="center">  
+
+⭐ This is a project to demonstrate my ability in native Android development with Kotlin. More technical information below.
+
+✂️ Salon Admin Premium is an Android application that allows employees and/or administrators of a beauty salon to monitor all appointments booked by customers on the customer's app (Salon Premium Client).
+
+</p>
+
+</br>
+
+<p float="left" align="center">
+
+
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/1-portrait.png"/>
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/2-portrait.png"/>
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/3-portrait.png"/>
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/4-portrait.png"/>
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/5-portrait.png"/>
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/6-portrait.png"/>
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/7-portrait.png"/>
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/8-portrait.png"/>
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/9-portrait.png"/>
+
+</p>
+
+## App Download
+
+Download the app <a href="apk/app-debug.apk?raw=true">APK directly</a>. You can see here <a href="https://www.google.com/search?q=como+instalar+um+apk+no+android">here</a> how to install an apk on your android device!
+
+## Technologies used
+
+- Minimum SDK level 24
+- [Linguagem Kotlin](https://kotlinlang.org/)
+
+- Android SDK components that were used:
+   - ViewPager2: Used to facilitate navigation between fragments of my app. I integrated it with a tabLayout to be able to easily navigate between my fragments.
+   - viewModel: It is part of the MVVM that I used to organize my project. My viewModels serve as access to my data source access repositories (which in this case are some Firebase APIs) and this class also has as members variables that, if updated, should trigger some change on the screen.
+   - fragment: in this project I used fragments to organize the logic of my different screens.
+   - SharedFlow: This component comes from the kotlin libraries and helps me provide a component that tells the screen that it needs to be updated. I chose sharedFlow because, at first, I didn't want to store the values already emitted in cache. But maybe I'll change that in the future.
+   - viewBinding: This library helps me a lot when I use xmls to make my screens. I can easily access layout components without having to write much.
+
+- Other dependencies:
+   - CircleImageView: I used this github library to use rounded imageviews and borders to represent selections. It's a library that I've been using for some time because it works very well when I'm using xmls.
+   - DaggerHilt: Amazing library that makes it easy to inject dependencies into my classes. You can divide everything into modules and leave everything separate, so each object goes where it needs to go and sometimes without creating repeated instances.
+   - Glide: I used the glide too. This library is mainly useful when you want to consume an image that comes from a url and perform transformations on the image.
+   - FirebaseDatabase: I used the firebase database to save things that needed to be persisted such as new employees, services, days off, scheduling status, etc.
+   - FirebaseStorage: I used it to save photo files such as employee photos.
+## Arquitetura
+Nesse app utilizei a arquitetura [MVVM] que é uma arquitetura que já uso há bastante tempo para organizar meu código deixando-o mais legível e escalável.
+(https://developer.android.com/topic/architecture).
+</br></br>
+
+## Main Functionalities
+
+### Register all employees who work in the salon
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/6-portrait.png"/>
+
+### Follow the appointment schedule by date or employee
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/4-portrait.png"/>
+
+### Confirm or decline calls
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/7-portrait.png"/>
+
+### Register new services that will be offered to your customers
+<img alt="screenshot" width="30%" src="app/src/main/appscreenshots/9-portrait.png"/>
+
+
+Português:
 <h1 align="center">Salon Admin Premium</h1>
 
 <p align="center">
