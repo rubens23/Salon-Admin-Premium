@@ -57,8 +57,8 @@ Download the app <a href="apk/app-debug.apk?raw=true">APK directly</a>. You can 
    - Glide: I used the glide too. This library is mainly useful when you want to consume an image that comes from a url and perform transformations on the image.
    - FirebaseDatabase: I used the firebase database to save things that needed to be persisted such as new employees, services, days off, scheduling status, etc.
    - FirebaseStorage: I used it to save photo files such as employee photos.
-## Arquitetura
-Nesse app utilizei a arquitetura [MVVM] que é uma arquitetura que já uso há bastante tempo para organizar meu código deixando-o mais legível e escalável.
+## Architecture
+In this app I used the [MVVM] architecture, which is an architecture that I have been using for a long time to organize my code, making it more readable and scalable.
 (https://developer.android.com/topic/architecture).
 </br></br>
 
