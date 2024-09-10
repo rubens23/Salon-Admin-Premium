@@ -8,7 +8,7 @@ import com.rubens.salonadminpro.data.models.Appointment
 import com.rubens.salonadminpro.databinding.HorarioMarcadoItemBinding
 import com.rubens.salonadminpro.view.interfaces.OnAppointmentClickListener
 
-class HorariosAgendadosAdapter(val listaAgendamentos: ArrayList<Appointment>?, val appointmentClickListener: OnAppointmentClickListener): RecyclerView.Adapter<HorariosAgendadosAdapter.ViewHolder>() {
+class HorariosAgendadosAdapter(val listaAgendamentos: List<Appointment>?, val appointmentClickListener: OnAppointmentClickListener): RecyclerView.Adapter<HorariosAgendadosAdapter.ViewHolder>() {
     inner class ViewHolder(val binding: HorarioMarcadoItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindData(horarioMarcado: Appointment, position: Int){
             binding.nomeServico.text = horarioMarcado.service

@@ -3,8 +3,9 @@ package com.rubens.salonadminpro.viewmodels
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.rubens.salonadminpro.data.employees.repositories.EmployeeRepository
 import com.rubens.salonadminpro.data.models.Funcionario
-import com.rubens.salonadminpro.data.repositories.FirebaseRepository
+import com.rubens.salonadminpro.data.storage.repositories.StorageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FragmentFuncionariosViewModel @Inject constructor(
-    private val firebaseRepository: FirebaseRepository
+    private val employeeRepository: EmployeeRepository,
+    private val storageRepository: StorageRepository
 ) : ViewModel() {
     var corteCabelo: String = ""
     var pedicure: String = ""
@@ -28,21 +30,21 @@ class FragmentFuncionariosViewModel @Inject constructor(
     private val _salvouFuncionarioNoFirebase: MutableSharedFlow<Boolean> = MutableSharedFlow(replay= 0)
     val salvouFuncionarioNoFirebase: SharedFlow<Boolean> = _salvouFuncionarioNoFirebase
 
-    private val _pegouTodosOsFuncionarios: MutableSharedFlow<ArrayList<Funcionario>> = MutableSharedFlow(replay= 0)
-    val pegouTodosOsFuncionarios: SharedFlow<ArrayList<Funcionario>> = _pegouTodosOsFuncionarios
+    private val _pegouTodosOsFuncionarios: MutableSharedFlow<List<Funcionario>> = MutableSharedFlow(replay= 0)
+    val pegouTodosOsFuncionarios: SharedFlow<List<Funcionario>> = _pegouTodosOsFuncionarios
 
     fun getListaDeFuncionarios() {
-        firebaseRepository.pegarTodosFuncionarios(pegouTodosOsFuncionarios = ::pegouTodosOsFuncionarios)
+        employeeRepository.pegarTodosFuncionarios(pegouTodosOsFuncionarios = ::pegouTodosOsFuncionarios)
     }
 
-    private fun pegouTodosOsFuncionarios(funcionarios: ArrayList<Funcionario>) {
+    private fun pegouTodosOsFuncionarios(funcionarios: List<Funcionario>) {
         viewModelScope.launch {
             _pegouTodosOsFuncionarios.emit(funcionarios)
         }
     }
 
     fun sendPhotoToStorage(imgUri: Uri, fileExtension: String?) {
-        firebaseRepository.sendPhotoToStorage(imgUri, fileExtension, enviouFotoParaOStorage = ::enviouFotoParaStorage)
+        storageRepository.sendPhotoToStorage(imgUri, fileExtension, enviouFotoParaOStorage = ::enviouFotoParaStorage)
     }
 
     private fun enviouFotoParaStorage(url: String?) {
@@ -54,7 +56,7 @@ class FragmentFuncionariosViewModel @Inject constructor(
 
     fun saveFuncionarioInDatabase(urlFoto: String?, nomeFuncionario: String, cargoFuncionario: String) {
         urlFoto?.let {
-            firebaseRepository.saveFuncionarioInDatabase(urlFoto, salvouFuncionarioNoDatabase= ::salvouFuncionarioNoDatabase, corteCabelo, pinturaCabelo, manicure, pedicure,
+            employeeRepository.saveFuncionarioInDatabase(urlFoto, salvouFuncionarioNoDatabase= ::salvouFuncionarioNoDatabase, corteCabelo, pinturaCabelo, manicure, pedicure,
             nomeFuncionario, cargoFuncionario)
         }
 

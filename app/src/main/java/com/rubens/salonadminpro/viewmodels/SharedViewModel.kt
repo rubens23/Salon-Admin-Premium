@@ -3,7 +3,6 @@ package com.rubens.salonadminpro.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rubens.salonadminpro.data.models.Funcionario
-import com.rubens.salonadminpro.data.repositories.FirebaseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -12,7 +11,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(
-    private val firebaseRepository: FirebaseRepository
 ): ViewModel(){
 
     private val _precisaMudarParaFragmentoDetalhesFuncionario: MutableSharedFlow<Funcionario> = MutableSharedFlow(replay = 0)

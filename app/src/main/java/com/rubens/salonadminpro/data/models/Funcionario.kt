@@ -10,6 +10,6 @@ data class Funcionario(
     val funcionarioDisponivel: Boolean = true,
     val dataFolga: String = "",
     val childKey: String = "",
-    val listaServicos: ArrayList<String>? = null,
+    val listaServicos: List<String>? = null,
     var isSelected: Boolean = false
 ): Serializable

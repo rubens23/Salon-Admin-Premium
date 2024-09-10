@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="@id/tv_label_filtro_por_funcionario"
         android:layout_marginEnd="20dp"/>
 
-    <com.rubens.salonadminpro.components.CircularItemsView
+    <com.rubens.salonadminpro.components.ProfessionalServiceSelectorView
         android:id="@+id/professionals_circle_item_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

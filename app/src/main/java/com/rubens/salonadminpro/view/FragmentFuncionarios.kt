@@ -218,7 +218,7 @@ class FragmentFuncionarios : Fragment(), OnFuncionarioClickListener {
     }
 
 
-    private fun iniciarNovaListaNaRecyclerView(listaFuncionarios: ArrayList<Funcionario>) {
+    private fun iniciarNovaListaNaRecyclerView(listaFuncionarios: List<Funcionario>) {
 
         adapter = FuncionariosAdapter(listaFuncionarios, this)
         binding.recyclerFuncionarios.adapter = adapter

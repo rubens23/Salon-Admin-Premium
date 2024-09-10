@@ -4,7 +4,8 @@ import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rubens.salonadminpro.data.models.Servico
-import com.rubens.salonadminpro.data.repositories.FirebaseRepository
+import com.rubens.salonadminpro.data.services.repositories.ServicesRepository
+import com.rubens.salonadminpro.data.storage.repositories.StorageRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -13,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FragmentServicosViewModel @Inject constructor(
-    private val firebaseRepository: FirebaseRepository
+    private val servicesRepository: ServicesRepository,
+    private val storageRepository: StorageRepository
 ) : ViewModel() {
 
     private val _enviouFotoParaOStorage: MutableSharedFlow<String?> = MutableSharedFlow(replay= 0)
@@ -29,7 +31,7 @@ class FragmentServicosViewModel @Inject constructor(
     var imgUri: Uri? = null
 
     fun sendPhotoToStorage(imgUri: Uri, fileExtension: String) {
-        firebaseRepository.sendPhotoToStorage(imgUri, fileExtension, enviouFotoParaOStorage = ::enviouFotoParaOStorage)
+        storageRepository.sendPhotoToStorage(imgUri, fileExtension, enviouFotoParaOStorage = ::enviouFotoParaOStorage)
     }
 
     private fun enviouFotoParaOStorage(imgUrl: String?) {
@@ -39,7 +41,7 @@ class FragmentServicosViewModel @Inject constructor(
     }
 
     fun saveServicoInDatabase(urlFoto: String?, nomeServico: String) {
-        firebaseRepository.saveServicoInDatabase(urlFoto, nomeServico, salvouNovoServico = ::salvouONovoServico)
+        servicesRepository.saveServicoInDatabase(urlFoto, nomeServico, salvouNovoServico = ::salvouONovoServico)
 
     }
 
@@ -51,7 +53,7 @@ class FragmentServicosViewModel @Inject constructor(
     }
 
     fun pegarTodosOsServicos() {
-        firebaseRepository.pegarTodosServicos(pegouTodosOsServicos = ::pegouOsServicos)
+        servicesRepository.pegarTodosServicos(pegouTodosOsServicos = ::pegouOsServicos)
     }
 
     private fun pegouOsServicos(servicos: ArrayList<Servico>) {

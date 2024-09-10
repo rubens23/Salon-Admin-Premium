@@ -2,8 +2,9 @@ package com.rubens.salonadminpro.view
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.rubens.salonadminpro.data.employees.repositories.EmployeeRepository
 import com.rubens.salonadminpro.data.models.Funcionario
-import com.rubens.salonadminpro.data.repositories.FirebaseRepository
+import com.rubens.salonadminpro.data.services.repositories.ServicesRepository
 import com.santalu.maskara.widget.MaskEditText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -16,7 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FragmentDetalhesFuncionarioViewModel @Inject constructor(
-    private val firebaseRepository: FirebaseRepository
+    private val servicesRepository: ServicesRepository,
+    private val employeeRepository: EmployeeRepository
 ) : ViewModel() {
 
     var folgaDoFuncionario: String = ""
@@ -87,7 +89,7 @@ class FragmentDetalhesFuncionarioViewModel @Inject constructor(
     }
 
     fun updateListaDeServicos(funcionarioKey: String) {
-        firebaseRepository.updateListaDeServicos(funcionarioKey, listaDeServicosAtualizada = ::pegouListaDeServicosAtualizados)
+        servicesRepository.updateListaDeServicos(funcionarioKey, listaDeServicosAtualizada = ::pegouListaDeServicosAtualizados)
     }
 
     private fun pegouListaDeServicosAtualizados(servicos: ArrayList<String>) {
@@ -110,7 +112,7 @@ class FragmentDetalhesFuncionarioViewModel @Inject constructor(
             listaServicos = listaDeServicosDoFuncionario
         )
 
-        firebaseRepository.updateServicosDoFuncionario(func.childKey, funcionario, atualizouListaDeServicos = ::atualizouServicosDoFuncionario)
+        servicesRepository.updateServicosDoFuncionario(func.childKey, funcionario, atualizouListaDeServicos = ::atualizouServicosDoFuncionario)
 
     }
 
@@ -122,7 +124,7 @@ class FragmentDetalhesFuncionarioViewModel @Inject constructor(
     }
 
     fun pegarFolgas(funcionarioKey: String) {
-        firebaseRepository.pegarFolgas(funcionarioKey, pegouFolga = ::pegouFolgaDoFuncionario)
+        employeeRepository.pegarFolgas(funcionarioKey, pegouFolga = ::pegouFolgaDoFuncionario)
 
     }
 
@@ -134,7 +136,7 @@ class FragmentDetalhesFuncionarioViewModel @Inject constructor(
     }
 
     fun removerServicoDoFuncionario(funcionarioKey: String, servicoFuncionario: String) {
-        firebaseRepository.removerServicoDoFuncionario(funcionarioKey, servicoFuncionario, deletouServicoDoFuncionario = ::removeuServicoDoFuncionario)
+        servicesRepository.removerServicoDoFuncionario(funcionarioKey, servicoFuncionario, deletouServicoDoFuncionario = ::removeuServicoDoFuncionario)
 
     }
 
@@ -166,7 +168,7 @@ class FragmentDetalhesFuncionarioViewModel @Inject constructor(
     }
 
     fun salvarFolgaNova(funcionarioKey: String, dataFolga: String) {
-        firebaseRepository.salvarNovaFolga(funcionarioKey, dataFolga, salvouNovaFolga = ::salvouNovaFolgaDoFuncionario)
+        employeeRepository.salvarNovaFolga(funcionarioKey, dataFolga, salvouNovaFolga = ::salvouNovaFolgaDoFuncionario)
     }
 
     private fun salvouNovaFolgaDoFuncionario(salvou: Boolean) {
@@ -176,7 +178,7 @@ class FragmentDetalhesFuncionarioViewModel @Inject constructor(
     }
 
     fun carregarServicosDoFuncionario(childKey: String) {
-        firebaseRepository.updateListaDeServicos(childKey, listaDeServicosAtualizada = ::pegouListaDeServicos)
+        servicesRepository.updateListaDeServicos(childKey, listaDeServicosAtualizada = ::pegouListaDeServicos)
 
 
     }

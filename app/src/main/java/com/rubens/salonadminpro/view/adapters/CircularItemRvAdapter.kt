@@ -16,8 +16,8 @@ import com.rubens.salonadminpro.view.interfaces.ServiceClickListener
 
 
 class CircularItemRvAdapter(
-    val employeeList: ArrayList<Funcionario>? = null,
-    val servicesList: ArrayList<Servico>? = null,
+    var employeeList: List<Funcionario>? = null,
+    var servicesList: List<Servico>? = null,
     val serviceClickListener: ServiceClickListener? = null,
     val employeeClickListener: EmployeeClickListener? = null
 ) : RecyclerView.Adapter<CircularItemRvAdapter.ViewHolder>() {
@@ -185,22 +185,22 @@ class CircularItemRvAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(employeeList != null){
-            holder.bindProfessionalItem(employeeList[position])
+            holder.bindProfessionalItem(employeeList!![position])
 
         }
         if(servicesList != null){
-            holder.bindServiceItem(servicesList[position])
+            holder.bindServiceItem(servicesList!![position])
 
         }
     }
 
     override fun getItemCount(): Int{
         if(employeeList != null){
-            return employeeList.size
+            return employeeList!!.size
         }
 
         if(servicesList != null){
-            return servicesList.size
+            return servicesList!!.size
         }
         return 0
 

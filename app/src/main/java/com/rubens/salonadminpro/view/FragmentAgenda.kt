@@ -159,7 +159,7 @@ class FragmentAgenda : Fragment(), OnAppointmentClickListener, EmployeeClickList
         viewModel.getAllAppointments()
     }
 
-    private fun initRecyclerView(appointments: ArrayList<Appointment>) {
+    private fun initRecyclerView(appointments: List<Appointment>) {
 
 
         if (appointments.isNotEmpty()){
@@ -229,8 +229,8 @@ class FragmentAgenda : Fragment(), OnAppointmentClickListener, EmployeeClickList
 
     }
 
-    private fun changeEmployeeRecyclerView(listaFuncionarios: ArrayList<Funcionario>) {
-        binding.professionalsCircleItemView.setProfessionalsRecyclerView(listaFuncionarios, this)
+    private fun changeEmployeeRecyclerView(listaFuncionarios: List<Funcionario>) {
+        binding.professionalsCircleItemView.setProfessionalsList(listaFuncionarios, this)
 
     }
 
